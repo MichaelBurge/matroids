@@ -10,20 +10,20 @@ Section Group.
   Axiom G3: forall x:G, exists y:G, x * y = e.
   Theorem IdentityUniqueness : forall (x : G) (y : G), (Identity x /\ Identity y) -> (x = y).
     Proof.
-      intro.
-      intro.
-      intro.
+      intros.
       destruct H.
-      assert (x * y = x).
+      assert (x = x * y).
       unfold Identity in H0.
       destruct (H0 x).
+      symmetry.
       assumption.
       assert (x * y = y).
       unfold Identity in H.
       destruct (H y).
       assumption.
       transitivity (x * y).
-      symmetry.
       assumption.
       assumption.
+  Qed.
+Print IdentityUniqueness.
 End Group
